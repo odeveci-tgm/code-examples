@@ -48,12 +48,12 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Server">
+    <target depends="build" name="Server">
         <java classname="server.Server" failonerror="true" fork="yes">
             <classpath refid="rmiCommandPattern.classpath"/>
         </java>
     </target>
-    <target name="Client">
+    <target depends="build" name="Client">
         <java classname="client.Client" failonerror="true" fork="yes">
             <classpath refid="rmiCommandPattern.classpath"/>
         </java>
