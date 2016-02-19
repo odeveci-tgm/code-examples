@@ -1,2 +1,2 @@
 # code-examples
-Coding examples in C
+Coding examples in C and Java.
