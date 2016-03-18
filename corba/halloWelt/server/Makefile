@@ -1,7 +1,7 @@
 CXX            	= /usr/bin/g++
 CPPFLAGS      	= -g -c
 LDFLAGS       	= -g
-OMNI_HOME     	= /home/schueler/omniORB-4.1.7/build
+OMNI_HOME     	= /home/mike/opt/omniORB
 OMNIIDL       	= $(OMNI_HOME)/bin/omniidl
 LIBS          	= -lomniORB4 -lomnithread -lomniDynamic4
 OBJECTS       	= echoSK.o server.o
@@ -19,6 +19,10 @@ echoSK.o: echoSK.cc echo.hh
 
 echoSK.cc: $(IDL_FILE)
 	$(OMNIIDL) -bcxx $(IDL_FILE)
+
+run: server
+	# Start Naming service with command 'omniNames -start -always' as root
+	./server -ORBInitRef NameService=corbaname::localhost
 
 clean clean-up:
 	rm -rf *.o

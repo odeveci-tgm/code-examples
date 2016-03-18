@@ -29,7 +29,7 @@
 static CORBA::Boolean bindObjectToName(CORBA::ORB_ptr, CORBA::Object_ptr);
 
 
-class Echo_i : public POA_hfock::Echo
+class Echo_i : public POA_helloworld::Echo
 {
 public:
   inline Echo_i() {}

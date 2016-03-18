@@ -1,4 +1,4 @@
-package corba;
+package helloworld;
 
 import org.omg.CosNaming.*;
 import org.omg.CORBA.*;

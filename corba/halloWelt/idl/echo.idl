@@ -1,6 +1,6 @@
 #ifndef __ECHO_IDL__
 #define __ECHO_IDL__
-module corba {
+module helloworld {
 	interface Echo {
 		string echoString(in string mesg);
 	};
