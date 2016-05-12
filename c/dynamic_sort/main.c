@@ -12,7 +12,7 @@ int main(void) {
 	/* (damit Eclipse die Ausgabe in der Konsole in der */
 	/* richtigen Reihenfolge anzeigt, muss dies am Anfang */
 	/* der main ausgefuehrt werden) */
-	setvbuf(stdout, NULL, _IONBF, 0);
+	// setvbuf(stdout, NULL, _IONBF, 0);
 
 	return menue();
 }

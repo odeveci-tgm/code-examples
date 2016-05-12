@@ -1,11 +1,13 @@
 /*
- Name of file	: io.c
- Author			: Burkhard Hampl <burkhard.hampl@student.tgm.ac.at>
- Version		: 20141024.1
- Description	: Das C-File wo alle I/O sachen gemacht werden wie z.B. die CLI
- */
+   Name of file	: io.c
+Author			: Burkhard Hampl <burkhard.hampl@student.tgm.ac.at>
+Version		: 20141024.1
+Description	: Das C-File wo alle I/O sachen gemacht werden wie z.B. die CLI
+*/
 
 #include "sortieren.h"
+
+void own_flush(FILE*);
 
 /* ausgeben des arrays des structs*/
 int ausgeben(int* zahlen, int groesse) {
@@ -48,23 +50,25 @@ int menue() {
 	do {
 		do {
 			printf("Bitte geben Sie den gewuenschten Sortieralgorithmus ein:\n1 ... Bubblesort\n2 ... Mergesort\n3 ... Quicksort\n");
+			own_flush(stdin);
 			fgets(op, 1, stdin);
+			printf("op: %c", op);
 			if (strcmp(op, "q") == 0)
 				return doExit();
 			int richtigeEingabe = -1;
 			switch (strtol(op, NULL, 10)) {
-			case 1:
-				arraySort.sort = bubblesort;
-				richtigeEingabe = 1;
-				break;
-			case 2:
-				arraySort.sort = mergesort;
-				richtigeEingabe = 1;
-				break;
-			case 3:
-				arraySort.sort = quicksort;
-				richtigeEingabe = 1;
-				break;
+				case 1:
+					arraySort.sort = bubblesort;
+					richtigeEingabe = 1;
+					break;
+				case 2:
+					arraySort.sort = mergesort;
+					richtigeEingabe = 1;
+					break;
+				case 3:
+					arraySort.sort = quicksort;
+					richtigeEingabe = 1;
+					break;
 			}
 			if (richtigeEingabe == 1)
 				break;
@@ -130,4 +134,11 @@ int menue() {
 	} while (1);
 
 	return EXIT_FAILURE;
+}
+
+void own_flush(FILE* stream) {
+	char c;
+	while(c != '\n') {
+		c = getc(stream);
+	}
 }
