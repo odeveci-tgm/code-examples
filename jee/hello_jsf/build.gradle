@@ -34,6 +34,6 @@ dependencies {
 gretty {
 	// Possible servletContainer values are 'jetty7', 'jetty8', 'jetty9', 'tomcat7', 'tomcat8'. Default is 'jetty9'.
 	servletContainer = 'jetty9'
-	host = '10.0.108.79'
+	host = '10.5.105.97'
 	httpPort = 1234
 }
