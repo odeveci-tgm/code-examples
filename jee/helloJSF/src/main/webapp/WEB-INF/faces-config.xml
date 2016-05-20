@@ -6,12 +6,4 @@
 	version="2.2">
 	<!-- <managed-bean> <managed-bean-name>helloWorld</managed-bean-name> <managed-bean-class>hello.HelloWorld</managed-bean-class> 
 		<managed-bean-scope>session</managed-bean-scope> </managed-bean> -->
-		
-	<navigation-rule>
-		<from-view-id>login.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>validation</from-outcome>
-			<to-view-id>welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
 </faces-config>
