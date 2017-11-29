@@ -31,6 +31,8 @@
 
 package engine;
 
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -44,9 +46,23 @@ public class ComputeEngine implements Compute {
     }
 
     public <T> T executeTask(Task<T> t) {
-        return t.execute();
+    	T task = null;
+    	Registry registry = null;
+    	Compute comp = null;
+    	try {
+    		registry = LocateRegistry.getRegistry(1099);
+        	comp = (Compute) registry.lookup("Worker90");
+        	task = comp.executeTask(t);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return task;
     }
-
+    
     public static void main(String[] args) {
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
@@ -63,5 +79,5 @@ public class ComputeEngine implements Compute {
             System.err.println("ComputeEngine exception:");
             e.printStackTrace();
         }
-    }
-}
+    }}
+

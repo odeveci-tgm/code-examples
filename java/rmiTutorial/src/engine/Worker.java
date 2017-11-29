@@ -13,6 +13,7 @@ public class Worker implements Compute {
 	}
 
 	public <T> T executeTask(Task<T> t) {
+		System.out.println(t.execute());
 		return t.execute();
 	}
 
